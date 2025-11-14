@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artist Portfolio – Elegant & Minimal</title>
+  <meta name="description" content="Portfolio of a professional artist — artworks, exhibitions, client work, and contact." />
+  <meta name="color-scheme" content="light" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* --- Reset & Base ----------------------------------------------------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#2a2a2a;background:#fbfaf8}
+    img{max-width:100%;display:block}
+    h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;color:#1f1f1f;margin:0 0 .5rem}
+    p{margin:.25rem 0 1rem}
+    a{color:inherit}
+    :root{
+      --bg:#fbfaf8;
+      --paper:#ffffff;
+      --ink:#1f1f1f;
+      --muted:#686868;
+      --soft:#efeae4; /* soft sand */
+      --accent:#b88a65; /* warm bronze */
+      --accent-2:#a7b9c5; /* mist blue */
+      --ring:rgba(184,138,101,.45);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:18px;
+      --container:1120px;
+    }
+    @media (prefers-reduced-motion: no-preference){
+      .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+      .fade-up.reveal{opacity:1;transform:none}
+      .soft-hover{transition:transform .2s ease, box-shadow .2s ease}
+      .soft-hover:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    }
+
+    /* --- Layout ----------------------------------------------------------- */
+    .container{width:100%;max-width:var(--container);margin-inline:auto;padding:0 20px}
+    header.site{position:sticky;top:0;background:linear-gradient(180deg,#fbfaf8,#fbfaf8e6 60%,#fbfaf800);backdrop-filter:saturate(120%) blur(6px);z-index:50;border-bottom:1px solid #eee}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand .logo{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent),#d8c2ae 70%);box-shadow:inset 0 0 0 2px #fff, 0 2px 8px rgba(0,0,0,.08)}
+    .brand .name{font-family:"Playfair Display",Georgia,serif;font-size:1.15rem;letter-spacing:.5px}
+    .menu{display:flex;gap:22px}
+    .menu a{font-size:.95rem;text-decoration:none;color:#3a3a3a;border-bottom:2px solid transparent;padding-bottom:6px}
+    .menu a:hover,.menu a:focus{border-color:var(--accent)}
+    .menu-toggle{display:none}
+
+    @media (max-width:860px){
+      .menu{display:none}
+      .menu.open{display:flex;flex-direction:column;gap:14px;position:absolute;left:20px;right:20px;top:64px;background:var(--paper);border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+      .menu-toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid #e8e0d8;padding:8px 12px;border-radius:12px;background:#fff}
+    }
+
+    /* --- Hero ------------------------------------------------------------- */
+    .hero{padding:64px 0 36px}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .hero .tag{display:inline-block;padding:.35rem .65rem;border-radius:999px;background:var(--soft);color:#6a625c;border:1px solid #eadfda;margin-bottom:10px;font-size:.9rem}
+    .hero h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:10px}
+    .hero p{color:#595959;max-width:52ch}
+    .hero-visual{border-radius:var(--radius);overflow:hidden;border:1px solid #eee;background:linear-gradient(135deg,#f0ebe6,#fff 40%,#f6f7f8);box-shadow:var(--shadow)}
+
+    @media (max-width:860px){
+      .hero-wrap{grid-template-columns:1fr}
+    }
+
+    /* --- Section styling -------------------------------------------------- */
+    section{padding:64px 0;border-top:1px solid #f0ece7}
+    section:nth-of-type(even){background:#fff}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+    .section-head h2{font-size:1.8rem}
+    .section-head p{color:var(--muted);max-width:70ch}
+
+    /* --- About / Statement ------------------------------------------------ */
+    .card{background:var(--paper);border:1px solid #eee;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+
+    /* --- Gallery ---------------------------------------------------------- */
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .tile{grid-column:span 4;position:relative;border-radius:16px;overflow:hidden;border:1px solid #eee;background:#faf7f3}
+    .tile.large{grid-column:span 8}
+    .tile figure{margin:0}
+    .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+    .caption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;padding:12px 14px;font-size:.95rem}
+    .caption small{opacity:.85}
+    @media (max-width:920px){.tile{grid-column:span 6}.tile.large{grid-column:span 12}}
+    @media (max-width:620px){.tile{grid-column:span 12}}
+
+    /* --- Exhibitions / Achievements -------------------------------------- */
+    .timeline{display:grid;gap:14px}
+    .event{display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:start;padding:14px;border:1px solid #eee;border-radius:14px;background:#fff}
+    .event .when{font-weight:600;color:#4a4a4a}
+    .event .what{color:#333}
+    @media (max-width:640px){.event{grid-template-columns:1fr}.event .when{order:2}}
+
+    /* --- Client Work ------------------------------------------------------ */
+    .clients{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .client-card{border:1px solid #eee;border-radius:16px;background:#fff;padding:16px;display:grid;gap:10px}
+    .client-card img{border-radius:10px;aspect-ratio:16/10;object-fit:cover}
+    .client-card .meta{display:flex;align-items:center;justify-content:space-between}
+    .badge{font-size:.8rem;padding:.25rem .5rem;border-radius:999px;background:#f3eee8;border:1px solid #e8e0d8}
+
+    /* --- Testimonials ----------------------------------------------------- */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .quote{background:linear-gradient(180deg,#fff,#faf7f3);border:1px solid #eee;border-radius:18px;padding:18px;position:relative}
+    .quote:before{content:"\201C";position:absolute;top:-10px;left:12px;font-family:"Playfair Display";font-size:3rem;color:#d9c6b6;line-height:1}
+    .person{display:flex;align-items:center;gap:10px;margin-top:10px}
+    .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#d9c6b6,#f1ece6)}
+
+    /* --- Contact ---------------------------------------------------------- */
+    form{display:grid;gap:12px;max-width:720px}
+    input,textarea{font:inherit;border:1px solid #e6e0d9;border-radius:12px;padding:12px 14px;background:#fff}
+    textarea{min-height:140px;resize:vertical}
+    input:focus,textarea:focus{outline:2px solid var(--ring);border-color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;border:1px solid transparent}
+    .btn.alt{background:#fff;color:#2a2a2a;border-color:#e6e0d9}
+
+    /* --- Footer ----------------------------------------------------------- */
+    footer{padding:36px 0;background:#fff;border-top:1px solid #eee}
+    .social{display:flex;gap:12px}
+    .social a{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:999px;border:1px solid #e8e0d8;background:#fff}
+    .fine{color:#78716c;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="name">Your Name — Artist</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+        <div id="menu" class="menu">
+          <a href="#about">About</a>
+          <a href="#statement">Artist Statement</a>
+          <a href="#gallery">Art Gallery</a>
+          <a href="#exhibitions">Exhibitions</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#clients">Client Work</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="hero">
+    <div class="container hero-wrap fade-up">
+      <div>
+        <span class="tag">Fine Art • Mixed Media • Photography</span>
+        <h1>Stories through strokes and frames.</h1>
+        <p>I am a multidisciplinary artist blending paint, texture, and light to craft intimate visual narratives. My work explores memory, silence, and the poetry of everyday spaces.</p>
+        <p>
+          <a class="btn" href="#gallery">View Portfolio</a>
+          <a class="btn alt" href="#contact" style="margin-left:8px;">Commission a Work</a>
+        </p>
+      </div>
+      <div class="hero-visual soft-hover" aria-hidden="true">
+        <!-- Replace with a hero image of your artwork (ideally 2400×1600) -->
+        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1600&auto=format&fit=crop" alt="Large hero artwork preview" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container fade-up">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <p>Based in [City, Country]. Available for exhibitions, commissions, and collaborations worldwide.</p>
+      </div>
+      <div class="card">
+        <p>Hello! I’m <strong>Your Name</strong>, a professional artist specializing in mixed media and fine‑art photography. I trained at [Your School] and have exhibited in galleries across [Regions]. My practice spans canvas, paper, and lens—constantly investigating texture, light, and the human condition.</p>
+        <p>When I’m not in the studio, I teach workshops and mentor emerging artists to develop a sustainable, authentic practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Artist Statement -->
+  <section id="statement">
+    <div class="container fade-up">
+      <div class="section-head">
+        <h2>Artist Statement</h2>
+        <p>A concise yet lyrical statement about your process, materials, themes, and intentions.</p>
+      </div>
+      <div class="card">
+        <p>My work is an archive of quiet transitions. I layer found papers, natural pigments, graphite, and photographs, sanding and sealing until traces of time emerge. The resulting surfaces hold small geographies—edges where memory softens. I search for a balance between absence and presence, inviting viewers to rest in the in‑between.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container fade-up">
+      <div class="section-head">
+        <h2>Art Gallery</h2>
+        <p>High‑resolution works. Click images for captions and details.</p>
+      </div>
+      <div class="gallery-grid">
+        <!-- Use high‑dpi images. Replace src with your own or local /images/*.jpg -->
+        <article class="tile large soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1600&auto=format&fit=crop" alt="Abstract mixed‑media canvas in warm tones" />
+            <figcaption class="caption"><strong>Solace No. 4</strong> — mixed media on canvas, 120×80cm <small>2024</small></figcaption>
+          </figure>
+        </article>
+        <article class="tile soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop" alt="Monochrome photograph of coastal rocks" />
+            <figcaption class="caption"><strong>Tide Study II</strong> — archival pigment print, 40×30cm <small>2023</small></figcaption>
+          </figure>
+        </article>
+        <article class="tile soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1513351792066-9f3a3c5dcf21?q=80&w=1200&auto=format&fit=crop" alt="Minimalist painting with pale blue and sand hues" />
+            <figcaption class="caption"><strong>Between Rooms</strong> — acrylic on panel, 60×60cm <small>2022</small></figcaption>
+          </figure>
+        </article>
+        <article class="tile soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?q=80&w=1200&auto=format&fit=crop" alt="Soft portrait photograph with natural window light" />
+            <figcaption class="caption"><strong>Window Light</strong> — silver gelatin print, 30×40cm <small>2024</small></figcaption>
+          </figure>
+        </article>
+        <article class="tile large soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1514517521153-1be72277b32f?q=80&w=1600&auto=format&fit=crop" alt="Textured paper collage in neutral palette" />
+            <figcaption class="caption"><strong>Palimpsest</strong> — paper collage & pigment, 100×70cm <small>2023</small></figcaption>
+          </figure>
+        </article>
+        <article class="tile soft-hover">
+          <figure>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Long‑exposure night city photograph" />
+            <figcaption class="caption"><strong>After Rain</strong> — archival pigment print, 50×40cm <small>2022</small></figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exhibitions -->
+  <section id="exhibitions">
+    <div class="container fade-up">
+      <div class="section-head">
+        <h2>Exhibitions</h2>
+        <p>Selected solo and group shows.</p>
+      </div>
+      <div class="timeline">
+        <div class="event">
+          <div class="when">2025 · Solo</div>
+          <div class="what"><strong>Edges of Quiet</strong>, Atelier Nine, Paris, FR</div>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Product Catalog</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff3f6c;
+}
+nav a {
+  text-decoration: none;
+  color: #000;
+  margin: 0 12px;
+  font-weight: 600;
+}
+
+/* Catalog Section */
+.catalog {
+  padding: 40px 60px;
+}
+.catalog h1 {
+  text-align: center;
+  color: #ff3f6c;
+  margin-bottom: 30px;
+}
+
+/* Product Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  background: #fff;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.card h3 {
+  margin: 10px 0 5px;
+}
+.price {
+  color: #ff3f6c;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.btn {
+  display: inline-block;
+  background: #ff3f6c;
+  color: white;
+  padding: 8px 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #e63959;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #fff6f8;
+  color: #444;
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">ShopEase</div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Cart 🛒</a>
+  </div>
+</nav>
+
+<!-- Catalog Section -->
+<section class="catalog">
+  <h1>Product Catalog</h1>
+  <div class="products">
+    <div class="card">
+      <img src="https://via.placeholder.com/250x300?text=Headphones" alt="Headphones">
+      <h3>Wireless Headphones</h3>
+      <p class="price">₹2499</p>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250x300?text=Shoes" alt="Shoes">
+      <h3>Running Shoes</h3>
+      <p class="price">₹3299</p>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250x300?text=T-Shirt" alt="T-Shirt">
+      <h3>Cotton T-Shirt</h3>
+      <p class="price">₹799</p>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250x300?text=Laptop+Bag" alt="Laptop Bag">
+      <h3>Laptop Backpack</h3>
+      <p class="price">₹1599</p>
+      <a href="#" class="btn">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>© 2025 ShopEase | Designed by [Your Name]</footer>
+
+</body>
+</html>

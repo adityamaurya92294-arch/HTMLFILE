@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myntra Clone</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    /* Navbar */
+    .navbar {
+      display: flex; justify-content: space-between; 
+      align-items: center; padding: 15px 50px; 
+      background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar img { height: 40px; }
+    .nav-links { display: flex; gap: 20px; font-weight: bold; }
+    .nav-links a { text-decoration: none; color: black; }
+    .search { flex: 1; margin: 0 30px; }
+    .search input {
+      width: 100%; padding: 8px 12px;
+      border: 1px solid #ccc; border-radius: 20px;
+    }
+
+    /* Hero Banner */
+    .banner img { width: 100%; }
+
+    /* Categories */
+    .categories {
+      display: grid; grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; padding: 40px;
+    }
+    .categories img {
+      width: 100%; border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .categories img:hover { transform: scale(1.05); }
+
+    /* Products */
+    .products {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px; padding: 40px;
+    }
+    .product {
+      border: 1px solid #eee; border-radius: 10px;
+      text-align: center; padding: 15px;
+      transition: transform 0.3s;
+    }
+    .product img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+    .product:hover { transform: scale(1.05); }
+    .price { color: #e91e63; font-weight: bold; }
+
+    /* Footer */
+    .footer {
+      background: #f3f3f3; text-align: center; padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="https://constant.myntassets.com/web/assets/img/MyntraLogo.png" alt="Myntra">
+    <div class="nav-links">
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">Kids</a>
+      <a href="#">Beauty</a>
+      <a href="#">Studio</a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search for products, brands and more">
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="https://assets.myntassets.com/f_auto,fl_progressive/h_800,q_60,w_1200/v1/assets/images/banner.jpg" alt="Banner">
+  </div>
+
+  <!-- Categories -->
+  <h2 style="text-align:center; margin-top:30px;">Shop by Category</h2>
+  <div class="categories">
+    <img src="data:image/webp;base64,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" alt="Men">
+    <img src="https://via.placeholder.com/400x400?text=Women" alt="Women">
+    <img src="https://via.placeholder.com/400x400?text=Kids" alt="Kids">
+  </div>
+
+  <!-- Products -->
+  <h2 style="text-align:center; margin-top:30px;">Featured Products</h2>
+  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x400?text=T-Shirt" alt="T-Shirt">
+      <h3>Casual T-Shirt</h3>
+      <p class="price">₹799</p>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x400?text=Jeans" alt="Jeans">
+      <h3>Denim Jeans</h3>
+      <p class="price">₹1499</p>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x400?text=Dress" alt="Dress">
+      <h3>Summer Dress</h3>
+      <p class="price">₹1299</p>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x400?text=Shoes" alt="Shoes">
+      <h3>Running Shoes</h3>
+      <p class="price">₹1999</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2025 Myntra Clone | Built for College Project</p>
+  </div>
+
+</body>
+</html>
+
+</body>
+</html>

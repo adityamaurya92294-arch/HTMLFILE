@@ -1,0 +1,8 @@
+div{
+    color: rgb(48, 43, 44);
+    background-color: aqua;
+}
+
+ div{
+    background-origin: padding-box;
+ }
